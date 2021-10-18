@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "e727bbeb-4045-4389-b316-35b7e034c9c1",
+		"name": "testCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json(); // ответный джсон сохраним в переменную ",
+							"",
+							"//JSON.parse(responseBody); ",
+							"",
+							"console.log('responseBody = ', responseBody);",
+							"console.log(jsonData.result.authToken); // из ответного джсона возьмет поле authToken",
+							"",
+							"if(pm.response.code === 200){",
+							"    pm.collectionVariables.set(\"access_token\", jsonData.result.authToken); //  из ответного джсона возьмет поле authToken  и сохранит в переменную access_token",
+							"    //pm.environment.set(\"access_token\", jsonData.result.authToken); // будет переменная окружения",
+							"}",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"login\": \"admin@admin.ru\",\n  \"password\": \"adminadmin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{melitta_test_url}}/common/auth/login",
+					"host": [
+						"{{melitta_test_url}}"
+					],
+					"path": [
+						"common",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": ""
+		}
+	]
+}
