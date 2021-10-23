@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "api-test": "newman run tests/testCollection.postman_collection.json  --environment tests/testMyEnvironment.postman_environment.json --reporters=cli,junit,html,htmlextra,allure --reporter-htmlextra-export 'newman/result.html' --reporter-junit-export 'newman/report.xml' --reporter-html-export 'newman/report.html' --reporter-allure-export 'tests'"
+    "api-test": "newman run tests/testCollection.postman_collection.json  --environment tests/testMyEnvironment.postman_environment.json --reporters=cli,junit,html,htmlextra,allure --reporter-htmlextra-export 'newman/result.html' --reporter-junit-export 'newman/report.xml' --reporter-html-export 'newman/report.html' --reporter-allure-export 'newman/allure-results'"
   },
   "author": "Davletova Rufina",
   "dependencies": {
